@@ -30,24 +30,28 @@ const Footer = () => {
             <IconButton 
               color="inherit" 
               sx={{ '&:hover': { color: 'grey.300' } }}
+              aria-label="Facebook"
             >
               <FacebookIcon />
             </IconButton>
             <IconButton 
               color="inherit"
               sx={{ '&:hover': { color: 'grey.300' } }}
+              aria-label="Twitter"
             >
               <TwitterIcon />
             </IconButton>
             <IconButton 
               color="inherit"
               sx={{ '&:hover': { color: 'grey.300' } }}
+              aria-label="Instagram"
             >
               <InstagramIcon />
             </IconButton>
             <IconButton 
               color="inherit"
               sx={{ '&:hover': { color: 'grey.300' } }}
+              aria-label="LinkedIN"
             >
               <LinkedInIcon />
             </IconButton>

@@ -16,7 +16,7 @@ const Procedure = () => {
           How do we conduct our pest control procedure?
         </Typography>
         <Typography variant="body1" mb={2}>
-          Expert Pest Control understands the critical need of completing
+          Harbour Pest Control understands the critical need of completing
           meticulous and complete processes to eradicate all pests from your
           home. Our professionals will develop a comprehensive pest control
           strategy specifically for your infestation depending on the severity

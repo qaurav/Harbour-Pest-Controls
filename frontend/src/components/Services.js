@@ -84,7 +84,7 @@ const Services = () => {
       title: "Possum removal",
       icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk2Pm0ppghRT2ncMN_kcDcGXoQ9Qk5l2jQ9qbUt8eSFac4BGJvleAilXlUq1RpOWaH_Mo&usqp=CAU",
       description:
-        "Possum removal can involve trapping, repelling, or fencing. Possums are a protected species, so it's important to follow the correct procedures. Expert Pest Control is dedicated to delivering exceptional possum removal services. Our comprehensive approach ensures the safe and complete removal of these pests. With highly trained technicians, we provide effective and humane solutions to quickly and efficiently rid your home of possums.",
+        "Possum removal can involve trapping, repelling, or fencing. Possums are a protected species, so it's important to follow the correct procedures. Harbour Pest Control is dedicated to delivering exceptional possum removal services. Our comprehensive approach ensures the safe and complete removal of these pests. With highly trained technicians, we provide effective and humane solutions to quickly and efficiently rid your home of possums.",
     },
   ];
 

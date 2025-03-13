@@ -87,7 +87,7 @@ const Hero = () => {
             <CarouselItem key={index}>
               <CarouselImage
                 src={item.image}
-                alt="Pest control service"
+                alt={`${item.title} - ${item.description}`}
               />
               <Overlay>
                 <Container maxWidth="md">

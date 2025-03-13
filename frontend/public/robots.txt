@@ -1,0 +1,11 @@
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Disallow crawling of specific directories or files
+Disallow: /private/
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.harbourpestcontrol.com.au/sitemap.xml

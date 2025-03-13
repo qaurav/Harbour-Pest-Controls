@@ -24,14 +24,14 @@ const TopBar = () => {
               <EmailIcon fontSize="small" />
               <Typography
                 component="a"
-                href="mailto:info@harbourpestcontrol.com"
+                href="mailto:info@harbourpestcontrols.com"
                 sx={{
                   color: 'inherit',
                   textDecoration: 'none',
                   '&:hover': { color: 'grey.300' },
                 }}
               >
-                info@harbourpestcontrol.com
+                info@harbourpestcontrols.com
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>

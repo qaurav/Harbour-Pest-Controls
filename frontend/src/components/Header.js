@@ -67,7 +67,7 @@ const Header = () => {
 >
   <img 
     src="/Logo.jpg"
-    alt="Harbour Pest Control" 
+    alt="Harbour Pest Control - Professional Pest Management Services" 
     style={{
       height: '50px', // Adjust height as needed
       width: 'auto',
@@ -87,6 +87,7 @@ const Header = () => {
                 duration={500}
                 color="inherit"
                 sx={{ '&:hover': { color: 'grey.300' } }}
+                title={`Navigate to ${item.text}`}
               >
                 {item.text}
               </Button>
