@@ -39,6 +39,10 @@ app.use(express.static('public', {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/bookings', bookingRoutes);
+app.use('/api/', function (req, res) {
+  console.log("/user request called");
+  res.send('Welcome to GeeksforGeeks');
+});
 
 // Sitemap route
 app.get('/sitemap.xml', (req, res) => {
