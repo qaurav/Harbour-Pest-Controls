@@ -6,7 +6,7 @@ import { AuthProvider } from './context/AuthContext';
 import { theme } from './theme/theme';
 
 // Existing Components
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import Login from './components/Login';
 import AdminDashboard from './components/AdminDashboard';
 import BookingForm from './components/BookingForm';
