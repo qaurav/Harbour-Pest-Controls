@@ -17,15 +17,21 @@ api.interceptors.request.use((config) => {
 
 export const createBooking = async (bookingData) => {
   const response = await api.post('api/bookings', bookingData);
-  return response;
+  return Array.isArray(response.data) ? response.data : [];
 };
 
-export const fetchBookings = () => {
-  return api.get('api/bookings').then(response => response.data);
+export const fetchBookings = async () => {
+  try {
+    const response = await api.get('api/bookings');
+    return Array.isArray(response.data) ? response.data : [];
+  } catch (error) {
+    console.error('Error fetching bookings:', error);
+    return []; // Return an empty array in case of error
+  }
 };
 
 export const updateBooking = async (id, bookingData) => {
-  const response = await axios.patch(`api/bookings/${id}`, bookingData);
+  const response = await api.patch(`api/bookings/${id}`, bookingData);
   return response;
 };
 export const deleteBooking = async (bookingId) => {

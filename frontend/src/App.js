@@ -22,7 +22,7 @@ import Services from './components/Services';
 import Booking from './components/Booking';
 import About from './components/About';
 import Contact from './components/Contact';
-import AdminLogin from './components/AdminLogin';
+// import AdminLogin from './components/AdminLogin';
 import Footer from './components/Footer';
 
 

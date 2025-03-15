@@ -66,10 +66,10 @@ const Header = () => {
   }}
 >
   <img 
-    src="/Logo.jpg"
+    src="/Logo.png"
     alt="Harbour Pest Control - Professional Pest Management Services" 
     style={{
-      height: '50px', // Adjust height as needed
+      height: '80px', // Adjust height as needed
       width: 'auto',
       // maxWidth: '200px',
       objectFit: 'cover'
