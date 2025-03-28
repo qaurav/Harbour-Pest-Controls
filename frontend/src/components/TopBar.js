@@ -10,7 +10,7 @@ import {
   Container,
 } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
-import PhoneIcon from '@mui/icons-material/Phone';
+// import PhoneIcon from '@mui/icons-material/Phone';
 
 const TopBar = () => {
   const { isAuthenticated } = useAuth();
@@ -35,7 +35,7 @@ const TopBar = () => {
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <PhoneIcon fontSize="small" />
+              {/* <PhoneIcon fontSize="small" /> */}
               <Typography
                 component="a"
                 href="tel:+61234567890"

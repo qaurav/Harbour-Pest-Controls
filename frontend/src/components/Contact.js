@@ -15,7 +15,7 @@ const Contact = () => {
     const email = event.target.email.value;
     const message = event.target.message.value;
     
-    const mailtoLink = `mailto:info@expertpestcontrolsydney.com?subject=Contact%20Form%20Submission&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AMessage: ${encodeURIComponent(message)}`;
+    const mailtoLink = `mailto:info@harbourpestcontrols.com.au?subject=Contact%20Form%20Submission&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AMessage: ${encodeURIComponent(message)}`;
     
     window.location.href = mailtoLink;
   };

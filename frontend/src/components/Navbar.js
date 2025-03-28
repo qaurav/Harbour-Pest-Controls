@@ -63,7 +63,7 @@ const Navbar = () => {
           textDecoration: 'none', 
           color: 'inherit' 
         }}>
-          Expert Pest Control
+          Harbour Pest Controls
         </Typography>
 
         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
