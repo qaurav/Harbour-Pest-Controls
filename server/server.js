@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const compression = require('compression');
+const path = require('path');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
@@ -27,7 +28,7 @@ app.use((req, res, next) => {
 });
 
 // Serve static files
-app.use(express.static('public', {
+app.use(express.static(--dirname,'public', {
   maxAge: '1y',
   setHeaders: (res, path) => {
     if (path.endsWith('.html')) {
@@ -39,16 +40,18 @@ app.use(express.static('public', {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/bookings', bookingRoutes);
-app.use('/api/', function (req, res) {
-  console.log("/user request called");
-  res.send('Welcome to GeeksforGeeks');
-});
+
 
 // Sitemap route
 app.get('/sitemap.xml', (req, res) => {
   const sitemapPath = path.join(__dirname, 'public', 'sitemap.xml');
   res.type('application/xml');
   res.sendFile(sitemapPath);
+});
+
+// *** IMPORTANT: Catch-all route for SPA ***
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html')); // Serve index.html
 });
 
 // Error handling
