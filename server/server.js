@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 });
 
 // Serve static files
-app.use(express.static(--dirname,'public', {
+app.use(express.static(__dirname,'public', {
   maxAge: '1y',
   setHeaders: (res, path) => {
     if (path.endsWith('.html')) {
