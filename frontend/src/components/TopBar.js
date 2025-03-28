@@ -36,7 +36,7 @@ const TopBar = () => {
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               {/* <PhoneIcon fontSize="small" /> */}
-              <Typography
+              {/* <Typography
                 component="a"
                 href="tel:+61234567890"
                 sx={{
@@ -46,7 +46,7 @@ const TopBar = () => {
                 }}
               >
                 +61 234 567 890
-              </Typography>
+              </Typography> */}
             </Box>
           </Box>
 
