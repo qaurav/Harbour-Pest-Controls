@@ -59,7 +59,7 @@ exports.login = async (req, res) => {
       expiresIn: config.jwtExpire
     });
 
-    res.json({ token });
+    res.status(200).json({ token });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }
