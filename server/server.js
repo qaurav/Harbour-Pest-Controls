@@ -17,10 +17,25 @@ app.use(compression());
 app.use(express.json());
 app.use(morgan('combined'));
 
+const allowedOrigins = [
+  'http://localhost:3000', // React development server
+  'https://www.harbourpestcontrols.com.au', // Custom domain (if applicable)
+  'https://harbour-pest-control-1.onrender.com', // Render frontend URL
+];
+
+// Configure CORS to allow multiple origins
 app.use(cors({
-  origin: 'https://www.harbourpestcontrols.com.au', // Allow requests from your frontend domain
-  methods: ['GET', 'POST', 'OPTIONS'], // Allow these HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+  origin: (origin, callback) => {
+    console.log('Request origin:', origin); // Log the origin for debugging
+    // Allow requests with no origin (e.g., Postman, curl) or if the origin is in the allowed list
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 // Security and SEO headers
