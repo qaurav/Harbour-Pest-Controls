@@ -12,8 +12,8 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
-import axios from "axios";
 import { format } from 'date-fns';
+import { createBooking } from '../services/api'; // Import createBooking from api.js
 
 const Booking = () => {
   const initialState = {
@@ -48,19 +48,21 @@ const Booking = () => {
         ...formData,
         date: formattedDate,
       };
-      
-      const response = await axios.post(
-        "http://localhost:5000/api/bookings",
-        payload
-      );
 
-      if (response.data.success) {
+      // Use createBooking from api.js instead of axios.post
+      const result = await createBooking(payload);
+
+      // Adjust response handling based on backend response
+      // Assuming the backend returns the created booking object or an array
+      if (result) {
         alert("Booking successful!");
         setFormData(initialState);
+      } else {
+        throw new Error("No booking data returned");
       }
     } catch (error) {
       alert("Booking failed. Please try again.");
-      console.error(error);
+      console.error("Booking error:", error);
     }
   };
 

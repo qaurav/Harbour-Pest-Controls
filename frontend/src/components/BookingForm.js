@@ -9,8 +9,8 @@ import {
   MenuItem,
   Grid
 } from '@mui/material';
-import axios from 'axios';
 import { format } from 'date-fns';
+import { createBooking, updateBooking } from '../services/api'; // Import functions from api.js
 
 const BookingForm = ({ open, handleClose, booking, onSubmit }) => {
   const initialState = {
@@ -65,35 +65,26 @@ const BookingForm = ({ open, handleClose, booking, onSubmit }) => {
         ...formData,
         date: formattedDate,
       };
-      
-      // const response = await axios.post(
-      //   "http://localhost:5000/api/bookings",
-      //   payload
-      // );
+
       let response;
       if (booking) {
-        // Handle edit
-        response = await axios.patch(
-          `http://localhost:5000/api/bookings/${booking._id}`,
-          payload,
-          {
-            headers: {
-              'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-          }
-        );
+        // Handle edit using updateBooking from api.js
+        response = await updateBooking(booking._id, payload);
+        // updateBooking returns the full response object
+        if (response.data) {
+          alert("Booking updated successfully!");
+          onSubmit(response.data);
+          handleClose();
+        }
       } else {
-        // Handle create
-        response = await axios.post(
-          "http://localhost:5000/api/bookings",
-          payload
-        );
-      }
-
-      if (response.data) {
-        alert(booking ? "Booking updated successfully!" : "Booking successful!");
-        onSubmit(response.data);
-        handleClose();
+        // Handle create using createBooking from api.js
+        response = await createBooking(payload);
+        // createBooking returns response.data
+        if (response) {
+          alert("Booking successful!");
+          onSubmit(response);
+          handleClose();
+        }
       }
     } catch (error) {
       console.error('Error details:', error);
