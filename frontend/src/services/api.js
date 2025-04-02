@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/';
+const API_URL = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace(/\/$/, '');
 
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: `${API_URL}/api`, // Append /api to the base URL
 });
 
 
@@ -18,7 +18,7 @@ api.interceptors.request.use((config) => {
 
 export const createBooking = async (bookingData) => {
   try{
-    const response = await api.post('api/bookings', bookingData);
+    const response = await api.post('/bookings', bookingData);
   return Array.isArray(response.data) ? response.data : [];
   } catch(error) {
     console.error('Error creating bookings:', error);
@@ -29,7 +29,7 @@ export const createBooking = async (bookingData) => {
 
 export const fetchBookings = async () => {
   try {
-    const response = await api.get('api/bookings');
+    const response = await api.get('/bookings');
     console.log('Bookings fetched successfully:', response.data);
     return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
@@ -40,7 +40,7 @@ export const fetchBookings = async () => {
 
 export const updateBooking = async (id, bookingData) => {
   try {
-    const response = await api.patch(`api/bookings/${id}`, bookingData);
+    const response = await api.patch(`/bookings/${id}`, bookingData);
     console.log('Booking updated successfully:', response.data);
     return response;
   } catch (error) {
@@ -50,7 +50,7 @@ export const updateBooking = async (id, bookingData) => {
 };
 export const deleteBooking = async (bookingId) => {
   try {
-    const response = await api.delete(`api/bookings/${bookingId}`);
+    const response = await api.delete(`/bookings/${bookingId}`);
     console.log('Booking deleted successfully:', response.data);
     return response;
   } catch (error) {
@@ -61,7 +61,7 @@ export const deleteBooking = async (bookingId) => {
 
 export const login = async (credentials) => {
   try {
-    const response = await api.post('api/auth/login', credentials);
+    const response = await api.post('/auth/login', credentials);
     console.log('Login successful:', response.data);
     return response;
   } catch (error) {
