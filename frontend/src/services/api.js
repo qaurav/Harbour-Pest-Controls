@@ -19,23 +19,19 @@ api.interceptors.request.use((config) => {
 });
 
 export const createBooking = async (bookingData) => {
-  try {
+  try{
     const response = await api.post('/bookings', bookingData);
-    // Backend returns { success: true, data: booking }
-    if (response.data.success) {
-      return response.data.data; // Return the booking object
-    }
-    throw new Error('Booking creation failed');
-  } catch (error) {
+  return Array.isArray(response.data) ? response.data : [];
+  } catch(error) {
     console.error('Error creating bookings:', error);
-    throw error;
+    return []; // Return an empty array in case of error
+  
   }
 };
+
 export const fetchBookings = async () => {
   try {
-    const response = await api.get('/bookings', {
-      params: { t: new Date().getTime() } // Cache-busting query parameter
-    });
+    const response = await api.get('/bookings');
     console.log('Bookings fetched successfully:', response.data);
     return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
