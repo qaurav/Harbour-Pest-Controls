@@ -9,7 +9,7 @@ yarn.lock
 
 # Environment variables
 .env
-frontend/.env.production
+frontend/.env
 frontens/.env.development
 server/.env
 .env.local

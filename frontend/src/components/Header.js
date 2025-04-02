@@ -14,7 +14,6 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as ScrollLink } from 'react-scroll';
-// import logo from '../../public/expertpestlogo.jpg'; 
 
 
 const Header = () => {
