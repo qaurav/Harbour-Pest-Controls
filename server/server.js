@@ -17,6 +17,12 @@ app.use(compression());
 app.use(express.json());
 app.use(morgan('combined'));
 
+app.use(cors({
+  origin: 'https://www.harbourpestcontrols.com.au', // Allow requests from your frontend domain
+  methods: ['GET', 'POST', 'OPTIONS'], // Allow these HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+}));
+
 // Security and SEO headers
 app.use((req, res, next) => {
   res.set('Cache-Control', 'public, max-age=31536000');
