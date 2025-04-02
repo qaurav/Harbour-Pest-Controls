@@ -33,9 +33,13 @@ export const createBooking = async (bookingData) => {
 export const fetchBookings = async () => {
   try {
     const response = await api.get('/bookings');
-    console.log(response);
-    // console.log('Bookings fetched successfully in fetching:', response.data);
-    return Array.isArray(response.data) ? response.data : [];
+    if (response.headers['content-type'].includes('application/json')) {
+      console.log('Bookings fetched successfully:', response.data);
+      return Array.isArray(response.data) ? response.data : [];
+    } else {
+      console.error('Unexpected response format:', response.data);
+      return []; // Return an empty array for unexpected formats
+    }
   } catch (error) {
     console.error('Error fetching bookings:', error);
     return []; // Return an empty array in case of error
