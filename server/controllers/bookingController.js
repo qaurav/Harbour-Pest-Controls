@@ -18,9 +18,6 @@ exports.createBooking = async (req, res) => {
 
 exports.getBookings = async (req, res) => {
   try {
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
     const bookings = await Booking.find().sort({ date: -1 });
     console.log('Bookings fetched from DB:', bookings); // Debug log
     res.json(bookings);
