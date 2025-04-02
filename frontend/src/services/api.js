@@ -21,10 +21,8 @@ api.interceptors.request.use((config) => {
 
 export const createBooking = async (bookingData) => {
   try{
-    console.log(bookingData);
-    console.log(typeof(bookingData));
-    
     const response = await api.post('/bookings', bookingData);
+    console.log(response.data)
   return Array.isArray(response.data) ? response.data : [];
   } catch(error) {
     console.error('Error creating bookings:', error);
