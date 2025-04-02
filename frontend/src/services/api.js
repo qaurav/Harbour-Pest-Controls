@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
+// console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
 
 const API_URL = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace(/\/$/, '');
 
@@ -19,16 +19,18 @@ api.interceptors.request.use((config) => {
 });
 
 export const createBooking = async (bookingData) => {
-  try{
+  try {
     const response = await api.post('/bookings', bookingData);
-  return Array.isArray(response.data) ? response.data : [];
-  } catch(error) {
+    // Backend returns { success: true, data: booking }
+    if (response.data.success) {
+      return response.data.data; // Return the booking object
+    }
+    throw new Error('Booking creation failed');
+  } catch (error) {
     console.error('Error creating bookings:', error);
-    return []; // Return an empty array in case of error
-  
+    throw error;
   }
 };
-
 export const fetchBookings = async () => {
   try {
     const response = await api.get('/bookings');

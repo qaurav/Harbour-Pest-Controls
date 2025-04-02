@@ -37,7 +37,9 @@ const AdminDashboard = () => {
 
   const loadBookings = async () => {
     try {
+      setLoading(true);
       const data = await fetchBookings();
+      console.log('Fetched bookings in AdminDashboard:', data); // Debug log
       setBookings(data);
     } catch (error) {
       console.error('Error loading bookings:', error);
@@ -48,12 +50,11 @@ const AdminDashboard = () => {
 
   const handleCreateBooking = async (bookingData) => {
     try {
-      const response = await createBooking(bookingData);
-      if(response.data){
+      const newBooking = await createBooking(bookingData);
+      if (newBooking) {
         await loadBookings();
         setOpenForm(false);
       }
-     
     } catch (error) {
       console.error('Error creating booking:', error);
     }
