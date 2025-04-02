@@ -33,7 +33,9 @@ export const createBooking = async (bookingData) => {
 };
 export const fetchBookings = async () => {
   try {
-    const response = await api.get('/bookings');
+    const response = await api.get('/bookings', {
+      params: { t: new Date().getTime() } // Cache-busting query parameter
+    });
     console.log('Bookings fetched successfully:', response.data);
     return Array.isArray(response.data) ? response.data : [];
   } catch (error) {

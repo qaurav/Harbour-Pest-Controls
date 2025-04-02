@@ -70,9 +70,14 @@ app.get('/sitemap.xml', (req, res) => {
   res.sendFile(sitemapPath);
 });
 
-// *** IMPORTANT: Catch-all route for SPA ***
+// Serve static files from the frontend build directory
+const buildPath = path.join(__dirname, '../frontend/build');
+app.use(express.static(buildPath));
+
+// Serve index.html for all non-API routes (for React Router)
 app.get('*', (req, res) => {
-  res.sendFile(path.join('public', 'index.html')); // Serve index.html
+  console.log('Request origin:', req.headers.origin);
+  res.sendFile(path.join(buildPath, 'index.html'));
 });
 
 // Error handling
