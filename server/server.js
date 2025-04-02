@@ -44,14 +44,14 @@ app.use('/api/bookings', bookingRoutes);
 
 // Sitemap route
 app.get('/sitemap.xml', (req, res) => {
-  const sitemapPath = path.join(__dirname, 'public', 'sitemap.xml');
+  const sitemapPath = path.join('public', 'sitemap.xml');
   res.type('application/xml');
   res.sendFile(sitemapPath);
 });
 
 // *** IMPORTANT: Catch-all route for SPA ***
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html')); // Serve index.html
+  res.sendFile(path.join('public', 'index.html')); // Serve index.html
 });
 
 // Error handling
