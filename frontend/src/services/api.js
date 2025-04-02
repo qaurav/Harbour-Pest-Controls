@@ -33,7 +33,8 @@ export const createBooking = async (bookingData) => {
 export const fetchBookings = async () => {
   try {
     const response = await api.get('/bookings');
-    console.log('Bookings fetched successfully:', response.data);
+    console.log(response);
+    // console.log('Bookings fetched successfully in fetching:', response.data);
     return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error fetching bookings:', error);
