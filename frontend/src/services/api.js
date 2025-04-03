@@ -3,7 +3,7 @@ import axios from 'axios';
 // console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
 
 const API_URL = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace(/\/$/, '');
-console.log(API_URL);
+// console.log(API_URL);
 
 const api = axios.create({
   baseURL: `${API_URL}/api`
@@ -23,10 +23,10 @@ api.interceptors.request.use((config) => {
 
 export const createBooking = async (bookingData) => {
   try{
-    console.log("BookingData",bookingData);
-    console.log(typeof(bookingData));
+    // console.log("BookingData",bookingData);
+    // console.log(typeof(bookingData));
     const response = await api.post('/bookings', bookingData);
-    console.log("Response",response);
+    // console.log("Response",response);
     
     console.log("response.data:",response.data)
     console.log(typeof(response.data))
