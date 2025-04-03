@@ -28,7 +28,8 @@ export const createBooking = async (bookingData) => {
     const response = await api.post('/bookings', bookingData);
     console.log("Response",response);
     
-    console.log(response.data)
+    console.log("response.data:",response.data)
+    console.log(typeof(response.data))
   return Array.isArray(response.data) ? response.data : [];
   } catch(error) {
     console.error('Error creating bookings:', error);
