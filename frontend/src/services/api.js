@@ -23,6 +23,7 @@ api.interceptors.request.use((config) => {
 
 api.interceptors.response.use((response) => {
   console.log('Response:', JSON.stringify(response, null, 2));
+  console.log("response");
   return response;
 }, (error) => {
   console.error('Response Error:', error);
