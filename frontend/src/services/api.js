@@ -32,7 +32,10 @@ api.interceptors.response.use((response) => {
 
 export const createBooking = async (bookingData) => {
   try {
+    console.log("Booking Data in api.js",bookingData);
+    
     const response = await api.post('/bookings', bookingData);
+    console.log("responsefrom api.js",response)
     if (!response.data || Object.keys(response.data).length === 0) {
       throw new Error('API returned an empty response');
     }
