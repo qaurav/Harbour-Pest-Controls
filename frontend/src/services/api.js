@@ -12,41 +12,47 @@ const api = axios.create({
 // console.log(api);
 
 
-// Request interceptor for adding auth tokens
+// Add debugging interceptors
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
+  console.log('Starting Request:', JSON.stringify(config, null, 2));
   return config;
+}, (error) => {
+  console.error('Request Error:', error);
+  return Promise.reject(error);
 });
 
+api.interceptors.response.use((response) => {
+  console.log('Response:', JSON.stringify(response, null, 2));
+  return response;
+}, (error) => {
+  console.error('Response Error:', error);
+  return Promise.reject(error);
+});
+
+
 export const createBooking = async (bookingData) => {
-  try{
-    // console.log("BookingData",bookingData);
-    // console.log(typeof(bookingData));
+  try {
     const response = await api.post('/bookings', bookingData);
-    // console.log("Response",response);
-    
-    console.log("response.data:",response.data)
-    console.log(typeof(response.data))
-  return Array.isArray(response.data) ? response.data : [];
-  } catch(error) {
-    console.error('Error creating bookings:', error);
-    return []; // Return an empty array in case of error
-  
+    if (!response.data || Object.keys(response.data).length === 0) {
+      throw new Error('API returned an empty response');
+    }
+    console.log('Booking created successfully:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error creating booking:', error.message || error);
+    return [];
   }
 };
 
 export const fetchBookings = async () => {
   try {
+    console.log(`Fetching bookings from URL: ${API_URL}/api/bookings`);
     const response = await api.get('/bookings');
-    console.log(response.data);
-    // console.log('Bookings fetched successfully in fetching:', response.data);
+    console.log('Fetched bookings:', response.data);
     return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error fetching bookings:', error);
-    return []; // Return an empty array in case of error
+    return [];
   }
 };
 
