@@ -3,12 +3,12 @@ const { validateBooking } = require("../utils/validations");
 
 exports.createBooking = async (req, res) => {
   try {
-    const { isValid, errors } = validateBooking(req.body);
+//     const { isValid, errors } = validateBooking(req.body);
 
-    if (!isValid) {
-      return res.status(400).json({ success: false, errors });
-    }
-console.log(req.body);
+//     if (!isValid) {
+//       return res.status(400).json({ success: false, errors });
+//     }
+    console.log(req.body);
 
     const booking = await Booking.create(req.body);
     console.log(booking);
