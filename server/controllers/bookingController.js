@@ -8,8 +8,11 @@ exports.createBooking = async (req, res) => {
     if (!isValid) {
       return res.status(400).json({ success: false, errors });
     }
+console.log(req.body);
 
     const booking = await Booking.create(req.body);
+    console.log(booking);
+    
     res.status(201).json({ success: true, data: booking });
   } catch (error) {
     res.status(400).json({ success: false, error: error.message });
