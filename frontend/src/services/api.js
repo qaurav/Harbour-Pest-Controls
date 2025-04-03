@@ -9,7 +9,7 @@ const api = axios.create({
   withCredentials: true,
 });
 
-console.log(api);
+// console.log(api);
 
 
 // Request interceptor for adding auth tokens
@@ -23,7 +23,11 @@ api.interceptors.request.use((config) => {
 
 export const createBooking = async (bookingData) => {
   try{
+    console.log("BookingData",bookingData);
+    
     const response = await api.post('/bookings', bookingData);
+    console.log("Response",response);
+    
     console.log(response.data)
   return Array.isArray(response.data) ? response.data : [];
   } catch(error) {
