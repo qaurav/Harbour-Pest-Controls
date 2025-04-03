@@ -24,7 +24,7 @@ api.interceptors.request.use((config) => {
 export const createBooking = async (bookingData) => {
   try{
     console.log("BookingData",bookingData);
-    
+    console.log(typeof(bookingData));
     const response = await api.post('/bookings', bookingData);
     console.log("Response",response);
     
