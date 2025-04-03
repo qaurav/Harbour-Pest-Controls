@@ -50,14 +50,14 @@ app.use((req, res, next) => {
 });
 
 // Serve static files
-app.use(express.static(path.join(__dirname,'public'), {
-  maxAge: '1y',
-  setHeaders: (res, path) => {
-    if (path.endsWith('.html')) {
-      res.set('Cache-Control', 'no-cache');
-    }
-  },
-}));
+// app.use(express.static(path.join(__dirname,'public'), {
+//   maxAge: '1y',
+//   setHeaders: (res, path) => {
+//     if (path.endsWith('.html')) {
+//       res.set('Cache-Control', 'no-cache');
+//     }
+//   },
+// }));
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -72,8 +72,8 @@ app.get('/sitemap.xml', (req, res) => {
 });
 
 // Serve static files from the frontend build directory
-const buildPath = path.join(__dirname, '../frontend/build');
-app.use(express.static(buildPath));
+// const buildPath = path.join(__dirname, '../frontend/build');
+// app.use(express.static(buildPath));
 
 // Serve index.html for all non-API routes (for React Router)
 app.get('*', (req, res) => {
