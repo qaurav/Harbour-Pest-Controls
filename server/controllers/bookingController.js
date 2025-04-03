@@ -3,21 +3,22 @@ const { validateBooking } = require("../utils/validations");
 
 exports.createBooking = async (req, res) => {
   try {
-//     const { isValid, errors } = validateBooking(req.body);
-
-//     if (!isValid) {
-//       return res.status(400).json({ success: false, errors });
-//     }
-    console.log(req.body);
+    console.log('Request Body:', req.body); // Debug log
 
     const booking = await Booking.create(req.body);
-    console.log(booking);
-    
+    console.log('Created Booking:', booking); // Debug log
+
+    if (!booking) {
+      return res.status(500).json({ success: false, message: 'Failed to create booking' });
+    }
+
     res.status(201).json({ success: true, data: booking });
   } catch (error) {
+    console.error('Error creating booking:', error.message);
     res.status(400).json({ success: false, error: error.message });
   }
 };
+
 
 exports.getBookings = async (req, res) => {
   try {
